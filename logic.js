@@ -19,7 +19,7 @@ function quizStart() {
  //hide start screen
  var startScreen  = document.getElementById("start-screen");
  startScreen.setAttribute("class", "hide");
-}
+
 // un-hide 
 questions1.remove.Attribute("class");
 
@@ -33,3 +33,38 @@ function setInterval() {
 
 // show starting time
 timer1.textContent = time;
+
+grabquestion()
+}
+
+// function for grabbing question from the array
+function grabquestion() {
+
+    // variable for referencing current question
+    var currentquestion = questions[currentQuestionIndex];
+
+    // update title with the current question
+    var title1 = document.getElementById("question-title");
+    title1.textContent = currentquestion.title;
+
+    // clear out any old question choices
+    choices1.innerHTML = "";
+
+    // loop over choices
+    currentquestion.choices.forEach(function(choice, i) {
+   
+        // create a new button for each choice
+        var choiceNode = document.createElement("button");
+        choiceNode.setAttribute("class", "choice");
+        choiceNode.setAttribute("value", choice);
+    
+        choiceNode.textContent = i + 1 + ". " + choice;
+
+        // put a click event listener for each choice
+        choiceNode.onclick = questionClick;
+
+        // display on the page
+    choicesEl.appendChild(choiceNode);
+});
+}
+
