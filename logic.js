@@ -112,7 +112,8 @@ function questionClick() {
   // function for ending quiz
   function endQuiz() {
 
-
+  // stop the timer
+ clearInterval(timerId);
 
 
 
