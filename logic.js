@@ -115,6 +115,19 @@ function questionClick() {
   // stop the timer
  clearInterval(timerId);
 
+ // show the end screen
+ var endscreen1 = document.getElementById("end-screen");
+ endscreen1.removeAttribute("class");
+
+ // show the final score
+  var finalscore1 = document.getElementById("final-score");
+  finalscore1.textContent = time;
+
+  // hide questions section
+  questions.setAttribute("class", "hide");
+}
+ 
+ // 
 
 
 
@@ -132,5 +145,11 @@ function questionClick() {
 
 
 
+// user clicks button to submit initials
+submitBtn.onclick = saveHighscore;
 
-  }
+// user clicks button to start quiz
+startBtn.onclick = startQuiz;
+
+initials1.onkeyup = checkForEnter;
+
