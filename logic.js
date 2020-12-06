@@ -165,29 +165,18 @@ function questionClick() {
      window.location.href = "highscores.html";
   }
 }
-     //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function checkForEnter(event) {
+  // "13" represents the enter key
+  if (event.key === "Enter") {
+    yourHighscore();
+  }
+}
 
 // user clicks button to submit initials
-submitBtn.onclick = saveHighscore;
+sumbitBtn.onclick = yourHighscore;
 
 // user clicks button to start quiz
-startBtn.onclick = startQuiz;
+startBtn.onclick = quizStart;
 
 initials1.onkeyup = checkForEnter;
 
