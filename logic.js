@@ -25,18 +25,13 @@ function quizStart() {
  startScreen.setAttribute("class", "hide");
 
 // un-hide 
-questions1.remove.Attribute("class");
+questions1.removeAttribute("class");
 
 //start timer
-timerid = setInterval(clocktick, 1000);
-
-// function to start the clock
-function setInterval() {
-    setInterval(setalert, 6000);
-}
+timer1 = setInterval(clockTick, 1000);
 
 // show starting time
-timer1.textContent = time;
+timer1.textContent === time;
 
 grabquestion()
 }
@@ -68,7 +63,7 @@ function grabquestion() {
         choiceNode.onclick = questionClick;
 
         // display on the page
-    choicesEl.appendChild(choiceNode);
+    choices1.appendChild(choiceNode);
 });
 }
 //function for clicking the question
@@ -129,9 +124,11 @@ function questionClick() {
  
   // function for clock tick
   function clockTick() {
+
   // update time
     time--;
     timer1.textContent = time;
+
   // check if user ran out of time
   if(timer <= 0) {
       endQuiz();
