@@ -13,8 +13,8 @@ var timer1 = document.getElementById("timer");
 var initials1 = document.getElementById("initials");
 
 // sound effects
-//var sfxRight = new Audio("assets/sfx/correct.wav");
-//var sfxWrong = new Audio("assets/sfx/incorrect.wav");
+var sfxRight = new Audio("/correct.wav")
+var sfxWrong = new Audio("/incorrect.wav");
 
 
 // function to start the quiz
@@ -31,7 +31,7 @@ questions1.removeAttribute("class");
 timer1 = setInterval(clockTick, 1000);
 
 // show starting time
-timer1.textContent === time;
+timer1.textContent = time;
 
 grabquestion()
 }
@@ -64,57 +64,59 @@ function grabquestion() {
 
         // display on the page
     choices1.appendChild(choiceNode);
-});
+  });
 }
 //function for clicking the question
 function questionClick() {
 // checking if the user guessed wrong
- if (this.value !== questions[currentQuestionIndex.answer]) {
+ if (this.value !== questions[currentQuestionIndex].answer) {
     // take off 15 seconds
     time -= 15;
-    if(time < 0) {
+
+    if (time < 0) {
         time = 0;
     }
- // display the new time on the page
- timer1.textContent = time;
 
- // play wrong sound effect
- //sfxWrong.play();
+     // display the new time on the page
+   timer1.textContent = time;
 
- feedback1.textContent = "Wrong!";
- } else {
-  // play "right" sound effect
-  //sfxRight.play();
+     // play wrong sound effect
+    sfxWrong.play();
 
-  feedback1.textContent = "Correct!";
- } 
- // flash right/wrong feedback on page for half a second
- feedback1.setAttribute("class", "feedback");
- setTimeout(function() {
-   feedback1.setAttribute("class", "feedback hide");
- }, 1000);
+     feedback1.textContent = "Wrong!";
+  } else {
+    // play "right" sound effect
+     sfxRight.play();
+
+    feedback1.textContent = "Correct!";
+  } 
+    // flash right/wrong feedback on page for half a second
+     feedback1.setAttribute("class", "feedback");
+     setTimeout(function() {
+     feedback1.setAttribute("class", "feedback hide");
+  }, 1000);
 
  // move to the next question
  currentQuestionIndex++;
 
  // check if we have ran out of questions
-  if (currentQuestionIndex === questions.length ) {
-      endQuiz()
+  if (currentQuestionIndex === questions.length) {
+      endQuiz();
   } else {
-      grabquestion()
+      grabquestion();
   }
 }
   // function for ending quiz
-  function endQuiz() {
+function endQuiz() {
 
   // stop the timer
  clearInterval(timerId);
 
- // show the end screen
- var endscreen1 = document.getElementById("end-screen");
- endscreen1.removeAttribute("class");
+  // show the end screen
+   var endscreen1 = document.getElementById("end-screen");
+  endscreen1.removeAttribute("class");
 
- // show the final score
+  // show the final score
   var finalscore1 = document.getElementById("final-score");
   finalscore1.textContent = time;
 
@@ -123,15 +125,15 @@ function questionClick() {
 }
  
   // function for clock tick
-  function clockTick() {
+function clockTick() {
 
   // update time
-    time--;
-    timer1.textContent = time;
+  time--;
+  timer1.textContent = time;
 
   // check if user ran out of time
-  if(time <= 0) {
-      endQuiz();
+  if (time <= 0) {
+  endQuiz();
   }
 }
  
@@ -142,7 +144,7 @@ function questionClick() {
     var initials = initials1.value.trim();
 
    // make sure the value isnt empty
-    if(initials !== "") {
+    if (initials !== "") {
 
    // get saved scores from local storage, if not any then set to an empty array
     var highscores = 
