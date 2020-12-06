@@ -74,7 +74,7 @@ function grabquestion() {
 //function for clicking the question
 function questionClick() {
 // checking if the user guessed wrong
- if (this.value !== questions[currentQuestionIndex.anser]) {
+ if (this.value !== questions[currentQuestionIndex.answer]) {
     // take off 15 seconds
     time -= 15;
     if(time < 0) {
@@ -127,7 +127,45 @@ function questionClick() {
   questions.setAttribute("class", "hide");
 }
  
- // 
+  // function for clock tick
+  function clockTick() {
+  // update time
+    time--;
+    timer1.textContent = time;
+  // check if user ran out of time
+  if(timer <= 0) {
+      endQuiz();
+  }
+}
+ 
+    // function to save the highscore
+    function yourHighscore() {
+
+    // grab value of input box
+    var initials = initials1.value.trim();
+
+   // make sure the value isnt empty
+    if(initials !== "") {
+
+   // get saved scores from local storage, if not any then set to an empty array
+    var highscores = 
+    JSON.parse(window.localstorage.getitem("highscores")) || [];
+
+    // format new score object for current answer
+    var newScore = {
+      score: time,
+      iniitials: initials
+    };
+
+    // saving to localstorage
+     highscores.push(newScore);
+     window.localstorage.setItem("highscores", JSON.stringify(highscores));
+
+     // redirect to next page
+     window.location.href = "highscores.html";
+  }
+}
+     //
 
 
 
