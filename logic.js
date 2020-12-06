@@ -13,8 +13,8 @@ var timer1 = document.getElementById("timer");
 var initials1 = document.getElementById("initials");
 
 // sound effects
-var sfxRight = new Audio("assets/sfx/correct.wav");
-var sfxWrong = new Audio("assets/sfx/incorrect.wav");
+//var sfxRight = new Audio("assets/sfx/correct.wav");
+//var sfxWrong = new Audio("assets/sfx/incorrect.wav");
 
 
 // function to start the quiz
@@ -79,12 +79,12 @@ function questionClick() {
  timer1.textContent = time;
 
  // play wrong sound effect
- sfxWrong.play();
+ //sfxWrong.play();
 
  feedback1.textContent = "Wrong!";
  } else {
   // play "right" sound effect
-  sfxRight.play();
+  //sfxRight.play();
 
   feedback1.textContent = "Correct!";
  } 
@@ -119,7 +119,7 @@ function questionClick() {
   finalscore1.textContent = time;
 
   // hide questions section
-  questions.setAttribute("class", "hide");
+  questions1.setAttribute("class", "hide");
 }
  
   // function for clock tick
@@ -130,7 +130,7 @@ function questionClick() {
     timer1.textContent = time;
 
   // check if user ran out of time
-  if(timer <= 0) {
+  if(time <= 0) {
       endQuiz();
   }
 }
